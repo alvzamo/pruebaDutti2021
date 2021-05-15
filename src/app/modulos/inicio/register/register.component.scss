@@ -15,20 +15,22 @@
 
 .buttons {
     text-align: center;
+    display: grid;
+
     margin-top: 30px;
     &__login {
         color: #fff;
         background-color: #b99d6b;
         border-color: #b99d6b;
-        width: 30%;
+       // width: 30%;
     }
     
     &__register {
-        color: #fff;
-        background-color: black;
+        color: black;
+        background-color: #fff;
         border-color: black;
-        width: 30%;
-        margin-left: 30px;
+        //width: 30%;
+        margin-top: 15px;
     }
 
     &__span {
@@ -36,6 +38,6 @@
         font-weight: inherit;
         color: black;
         line-height: 16px;
-        font-size: 16px;
+        font-size: 16px;    
     }
 }
