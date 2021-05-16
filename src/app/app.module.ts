@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-//import { PrincipalModule } from './components/principal/principal.module';
+import { PrincipalModule } from './modulos/principal/principal.module';
 import { InicioModule } from './modulos/inicio/inicio.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -21,13 +21,15 @@ import { PersistenciaService } from './services/persistence/persistencia.service
     AppComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    InicioModule
+    InicioModule,
+    PrincipalModule
 
   ],
+
   providers: [PersistenciaService],
   bootstrap: [AppComponent]
 })

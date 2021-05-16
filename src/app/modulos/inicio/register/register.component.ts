@@ -7,6 +7,8 @@ import { PersistenciaService} from './../../../services/persistence/persistencia
 import usersList from 'src/assets/json/users.json';
 import { User } from 'src/app/api-rest/model/user';
 
+export const USER_KEY = "USER_KEY";
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -40,7 +42,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) { return }
     let user:User= this.registerForm.value;
     console.log('User Register -->', user)
-    this.persistenciaService.set(this.registerForm.value.username,user);
+    this.persistenciaService.set(USER_KEY,user);
     // TODO : Falta integrar el servicio para registrar al usuario
     // JSON simulando usuarios
     console.log("get persist",this.persistenciaService.get('user'));
