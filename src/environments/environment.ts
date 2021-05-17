@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_SHIPS: 'https://swapi.dev/api',
+  API_IMAGES: 'https://starwars-visualguide.com/assets/img/starships'
 };
 
 /*

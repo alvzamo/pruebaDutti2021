@@ -11,6 +11,7 @@ import { PageOneComponent } from './page-one/page-one.component';
 import { PageTwoComponent } from './page-two/page-two.component';
 import { ShipsDetailsComponent } from './ships/ships-details/ships-details.component';
 import { PrincipalComponent } from './principal.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -26,7 +27,8 @@ import { PrincipalComponent } from './principal.component';
     PrincipalComponentsRoutingModule,
     CommonModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FlexLayoutModule 
   ]
 
 })
