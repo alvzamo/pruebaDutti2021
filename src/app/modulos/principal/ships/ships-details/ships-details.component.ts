@@ -12,19 +12,14 @@ export class ShipsDetailsComponent implements OnInit {
 
   @Input() dataDetailShip: Ship;
   @Input() imageDetailShip: Blob;
-
   imageError: string = 'assets/img/errorImg_x3.svg';
-
 
   constructor(private sanitizer: DomSanitizer) {
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   createImageFromBlob(img) {
-    console.log("img", img);
     if (img) {
       let image = img;
       let urlCreator = window.URL;

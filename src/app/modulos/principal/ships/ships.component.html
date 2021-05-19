@@ -1,5 +1,4 @@
 <div class="container">
-
 </div>
 <div *ngIf="hayNaves"></div>
 <pagination-controls (pageChange)="pageChanged($event)" class="text-center"></pagination-controls>
@@ -11,8 +10,6 @@
         <img [src]="createImageFromBlob(ships) " onError="this.src='assets/img/errorImg_x3.svg'" class="imgSize">
     </div>
 </div>
-
-
 
 <!-- Modal Details-->
 <div *ngIf="dataDetailShip" class="modal fade" id="exampleModal" tabindex="-1" role="dialog"

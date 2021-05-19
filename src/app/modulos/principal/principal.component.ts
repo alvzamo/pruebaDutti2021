@@ -11,7 +11,6 @@ export class PrincipalComponent implements OnInit {
   user:User;
   constructor(private sharedService:SharedService) { 
     this.user=this.sharedService.getUser();
-    console.log("usersss",this.user);
   }
 
   ngOnInit(): void {

@@ -3,8 +3,6 @@ import { ResponseListShip } from 'src/app/api-rest/model/responseListShip';
 import { Ship } from 'src/app/api-rest/model/ship';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from "rxjs/internal/Observable";
-import { createStore } from 'redux'
-import * as fromRoot from '../../../store/ships.reducer';
 
 import { select, Store } from "@ngrx/store";
 //import {IAppState} from "../../../store/ships.reducer"
@@ -12,8 +10,6 @@ import { select, Store } from "@ngrx/store";
 import { SharedService } from 'src/app/core/share/shared.service';
 
 import { ShipsAppService } from './../../../services/ships/shipsAppService.service';
-import { NgRedux } from '@angular-redux/store';
-import { ImageList } from 'src/app/api-rest/model/imageList';
 import { KeyValue } from 'src/app/api-rest/model/keyValue';
 import * as fromActions from '../../../store/actions';
 import { AppState } from '../../../store/app.state';
@@ -57,7 +53,6 @@ export class ShipsComponent implements OnInit {
       currentPage: 1,
       totalItems: 10
     };
-
   }
 
   ngOnInit(): void {
@@ -128,11 +123,8 @@ export class ShipsComponent implements OnInit {
       imageObjectList.value = imgShip;
       this.images.push(imageObjectList);
       return imgShip;
-
     }, error => {
       console.log("error imagen");
-
-
     }
     );
   }

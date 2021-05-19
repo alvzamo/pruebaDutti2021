@@ -37,8 +37,6 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    console.log('submit')
-
     if (this.registerForm.invalid) { return }
     let user:User= this.registerForm.value;
     this.persistenciaService.set( this.registerForm.value.username,user);

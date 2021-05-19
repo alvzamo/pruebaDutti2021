@@ -15,16 +15,12 @@ import { AppComponent } from './app.component';
 // Servicios
 import { ShipsService } from './../app/api-rest/api/shipsService.service';
 import { SharedService } from './../app/core/share/shared.service';
-
 import {ShipsEffects  } from './store/effects'
-
-
 import { PersistenciaService } from './services/persistence/persistencia.service';
 import { ShipsAppService } from './services/ships/shipsAppService.service';
 
 //import { PrincipalComponent } from './components/principal/principal.component';
 import { NgReduxModule } from '@angular-redux/store';
-import { NgRedux, DevToolsExtension } from '@angular-redux/store';
 
 @NgModule({
   declarations: [

@@ -1,19 +1,19 @@
 import { Ship } from '../api-rest/model/ship';
-import { ShipsActionTypes,  ShipsAction } from './actions';
-    
+import { ShipsActionTypes, ShipsAction } from './actions';
+
 
 export interface ShipsState {
-  count:number;
-  next:string;
-  previous:string;
-  results:Array<Ship>;
+  count: number;
+  next: string;
+  previous: string;
+  results: Array<Ship>;
 }
 
 const initialState: ShipsState = {
-  count:0,
-  next:'',
-  previous:'',
-  results:[]
+  count: 0,
+  next: '',
+  previous: '',
+  results: []
 };
 
 export function ShipReducer(state: ShipsState = initialState, action: ShipsAction) {
@@ -25,15 +25,15 @@ export function ShipReducer(state: ShipsState = initialState, action: ShipsActio
     case ShipsActionTypes.LOAD_SHIPS_SUCCESS:
       return {
         ...state,
-         ...action.payload,
+        ...action.payload,
       }
-    
-    case ShipsActionTypes.LOAD_SHIPS_FAILURE: 
+
+    case ShipsActionTypes.LOAD_SHIPS_FAILURE:
       return {
         ...state,
         error: action.payload
       }
-    
+
     default:
       return state;
   }
