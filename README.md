@@ -34,5 +34,11 @@ Navigate to `http://localhost:4200/`.
 
 
 # Notas del desarrollador:
+Para el punto 7:
+    Para la saturación del servidor, habría que estudiar lo casos concretos de porqué se producen. En ocasiones, con balanceadores es suficientes, si no lo fuera se deberían de controlar los accesos a un máximo para que no se sature el servidor.
 
+En cuanto a esta prueba, es una pena no haber podido disponer del tiempo suficiente para desarrollarla al completo, mejoras en maquetación, desarrollo completo de la página de Naves e introducir una galeria de imagenes en alguno de los otros componentes hubiesen sido una buena forma.
 
+El aprendizaje ha sido constante, ya que no había implementado nunca el patrón redux y aunque ha quedado de aquella manera, su concepto y realización me han valido para poder seguir aplicandolo a otros proyectos.
+
+Muchas gracias
