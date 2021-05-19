@@ -45,7 +45,7 @@ getImageShips(shipId:string):  Observable<Blob>{
         observer.complete();
       },
       
-                //error => this.erroresService.handleError(error)
+        error =>{return error}// this.erroresService.handleError(error)
 
     );
   }); 

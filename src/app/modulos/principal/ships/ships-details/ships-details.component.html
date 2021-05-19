@@ -4,16 +4,18 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{dataShip.name}}</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{dataDetailShip.name}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" fxFlex="100%" fxLayout="row">
-          <div fxFlex="30%"><img  [src]="createImageFromBlob(dataShip)" onError="this.src='assets/img/errorImg_x3.svg'" class="imgSize"></div>
+        <div class="modal-body" fxFlex="100%" fxLayout="row" fxLayout.sm="row"  fxLayout.xs="column" fxLayoutAlign.xs="center center">
+          <div fxFlex="30%"><img  [src]="imageDetailShip" onError="this.src='assets/img/errorImg_x3.svg'" class="imgSize"></div>
           <div fxFlex="70%" fxLayout="column">
-          <span>Model : {{dataShip.model}}</span><br>
-          <span>starship_class: {{dataShip.starship_class}}</span>
+          <span>Model : {{dataDetailShip.model}}</span>
+          <span>starship_class: {{dataDetailShip.starship_class}}</span>
+          <span>Pasajeros : {{dataDetailShip.passengers}}</span>
+          <span>Capacidad : {{dataDetailShip.cargo_capacity}}</span><br>
           </div>
         </div>
         <div class="modal-footer">
@@ -21,5 +23,4 @@
         </div>
       </div>
   </div>
-
 

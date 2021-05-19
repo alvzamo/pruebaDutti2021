@@ -10,7 +10,9 @@ import { DomSanitizer} from '@angular/platform-browser';
 })
 export class ShipsDetailsComponent implements OnInit {
 
-  @Input() dataShip: Ship;
+  @Input() dataDetailShip: Ship;
+  @Input() imageDetailShip: Blob;
+
   imageError:string='assets/img/errorImg_x3.svg';
 
 
@@ -21,9 +23,10 @@ export class ShipsDetailsComponent implements OnInit {
       
   }
 
-  createImageFromBlob(ship) {
-    if(ship.img){
-    let image=ship.img;
+  createImageFromBlob(img) {
+    console.log("img",img);
+    if(img){
+    let image=img;
    let urlCreator = window.URL;
    return this.sanitizer.bypassSecurityTrustUrl(
        urlCreator.createObjectURL(image));
