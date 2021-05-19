@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/core/share/shared.service';
+import { PersistenciaService } from 'src/app/services/persistence/persistencia.service';
 
 // JSON
 import usersList from 'src/assets/json/users.json';
@@ -20,26 +22,27 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router, private persistenciaService:PersistenciaService, private sharedService:SharedService
   ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: [ '', [Validators.required, Validators.minLength(3)]],
-      password: [ '', [Validators.required, Validators.minLength(6),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]]
+      password: [ '', [Validators.required, Validators.minLength(3)]]
     })
   }
   loginUser() {
     if (this.loginForm.invalid) { return }
-    // TODO : Falta integrar el servicio para autentificar al usuario
-    // JSON simulando usuarios
-    var userLogin = this.loginForm.value.username;
-    var filterJson = this.users.filter(function (user) { return user.first_name === userLogin  });
-    if (filterJson.length > 0) {
+
+   let respuesta= this.persistenciaService.get(this.loginForm.value.username, this.loginForm.value.password);
+    if(respuesta){   
+      this.sharedService.setUser(respuesta)
       this.router.navigate(['/principal/ships'])
-    } else {
+    }else{
       this.unregistered = true;
+
     }
   }
+      
 }
 

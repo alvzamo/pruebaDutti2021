@@ -18,7 +18,7 @@ import { KeyValue } from 'src/app/api-rest/model/keyValue';
 import * as fromActions from '../../../store/actions';
 import { AppState } from '../../../store/app.state';
 
-declare var $: any; 
+declare var $: any;
 
 
 @Component({
@@ -31,9 +31,9 @@ export class ShipsComponent implements OnInit {
   loading$: Observable<Boolean>;
   error$: Observable<Error>
 
-  dataDetailShip:Ship;
-  imageDetailShip:any;
-  
+  dataDetailShip: Ship;
+  imageDetailShip: any;
+
   responseListShip$: Observable<ResponseListShip>;
   dataShip: Observable<Ship[]>;
   images: Array<KeyValue> = [];
@@ -50,8 +50,8 @@ export class ShipsComponent implements OnInit {
   public dataList: any = [];
   imageshow: any;
 
-  constructor(private shipsService: ShipsAppService, private sanitizer: DomSanitizer, private sharedService:SharedService,private store: Store<AppState>) {
-   // store.pipe(select('shop')).subscribe(data => console.log("DATA"));
+  constructor(private shipsService: ShipsAppService, private sanitizer: DomSanitizer, private sharedService: SharedService, private store: Store<AppState>) {
+    // store.pipe(select('shop')).subscribe(data => console.log("DATA"));
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -61,15 +61,11 @@ export class ShipsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-this.getListShips();     
-  } 
-  
-  
+    this.getListShips();
+  }
+
+
   createImageFromBlob(ship: Ship) {
-
-
-
     let imageFound: KeyValue = this.images.find(imageShip => imageShip.key === ship.name);
     if (imageFound) {
       let urlCreator = window.URL;
@@ -77,72 +73,55 @@ this.getListShips();
         urlCreator.createObjectURL(imageFound.value));
     } else {
       return this.imageError;
+    }
+  }
 
-    } 
-
-
-   }
-
-  pageChanged(event) { 
+  pageChanged(event) {
     this.config.currentPage = event;
     this.sharedService.setCurrentPage(event)
     this.getListShips();
-
-
   }
-
-
 
   openDetails(ship) {
     this.dataDetailShip = ship;
-    this.imageDetailShip=this.createImageFromBlob(ship);
+    this.imageDetailShip = this.createImageFromBlob(ship);
     $("#exampleModal").modal('show');
-
   }
 
   getListShips() {
     this.store.dispatch(new fromActions.LoadShipsAction());
-    this.dataShip=this.store.select(store => store.shipping.results);
-   
-    this.store.select(store => store.shipping.results).subscribe(value=>{
-     if(value.length>0){
-      this.dataShipAux=value; 
+    this.dataShip = this.store.select(store => store.shipping.results);
 
-      value.forEach(ship => {
-        let imageFound: KeyValue = this.images.find(imageShip => imageShip.key === ship.name);
-        if( !imageFound   ){
-          let pathImgArray: Array<string> = ship.url.split('/');
-          let shipId = pathImgArray[pathImgArray.length - 2];
-          const urlImage = `${shipId}.jpg`;
-          this.getStarshipImages(ship.name, urlImage);
-          this.setPaginator();
-        }
-      
+    this.store.select(store => store.shipping.results).subscribe(value => {
+      if (value.length > 0) {
+        this.dataShipAux = value;
 
-      });
-
-    }
-     
+        value.forEach(ship => {
+          let imageFound: KeyValue = this.images.find(imageShip => imageShip.key === ship.name);
+          if (!imageFound) {
+            let pathImgArray: Array<string> = ship.url.split('/');
+            let shipId = pathImgArray[pathImgArray.length - 2];
+            const urlImage = `${shipId}.jpg`;
+            this.getStarshipImages(ship.name, urlImage);
+            this.setPaginator();
+          }
+        });
+      }
     });
-   
-    this.store.select(store => store.shipping.count).subscribe(value=>{
-      this.config.totalItems=value;
-    });
-    // this.getStarshipImages()
 
+    this.store.select(store => store.shipping.count).subscribe(value => {
+      this.config.totalItems = value;
+    });
     this.setPaginator();
-    
   }
 
-  setPaginator(){
-    this.config.currentPage =this.sharedService.getCurrentPage();
-    this.config.totalItems =this.sharedService.getTableConfig().count;
-    
+  setPaginator() {
+    this.config.currentPage = this.sharedService.getCurrentPage();
+    this.config.totalItems = this.sharedService.getTableConfig().count;
   }
+
   getStarshipImages(name, shipUrl) {
 
-
-    
     this.shipsService.getImageShips(shipUrl).subscribe((imgShip: Blob) => {
       let imageObjectList: KeyValue = <KeyValue>{};
       imageObjectList.key = name;
@@ -150,8 +129,9 @@ this.getListShips();
       this.images.push(imageObjectList);
       return imgShip;
 
-    }, error => {console.log("error imagen");
-    
+    }, error => {
+      console.log("error imagen");
+
 
     }
     );

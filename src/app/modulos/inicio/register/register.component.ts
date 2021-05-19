@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       lastName: [ '', [Validators.required, Validators.minLength(3)]],
       username: [ '', [Validators.required, Validators.minLength(3)]],
       email: [ '', [Validators.required, Validators.minLength(6),Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
-      password: [ 'sssa', [Validators.required, Validators.minLength(3)]],
+      password: [ '', [Validators.required, Validators.minLength(3)]],
 
     })
   }
@@ -41,13 +41,10 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.invalid) { return }
     let user:User= this.registerForm.value;
-    console.log('User Register -->', user)
-    this.persistenciaService.set(USER_KEY,user);
-    // TODO : Falta integrar el servicio para registrar al usuario
-    // JSON simulando usuarios
-    console.log("get persist",this.persistenciaService.get('user'));
+    this.persistenciaService.set( this.registerForm.value.username,user);
 
     var userLogin = this.registerForm.value;
+
     usersList.push(userLogin)
     console.log('User Register -->', usersList)
     this.router.navigate(['/principal/ships'])

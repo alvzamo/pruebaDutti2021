@@ -9,6 +9,12 @@
             <a class="dropdown-item" [routerLink]="''">Login</a>
         </div>
     </div>
+
+    <div *ngIf="user" fxLayoutAlign="end end">
+        <div style="margin-right: 60px;">{{user.username}} </div>
+        <div  (click)="logout()" [routerLink]="''"><i class="fas fa-sign-out-alt" id="sign-out-alt"></i></div>
+    
+    </div>
 </nav>
 
 
