@@ -12,6 +12,7 @@ import { PageTwoComponent } from './page-two/page-two.component';
 import { ShipsDetailsComponent } from './ships/ships-details/ships-details.component';
 import { PrincipalComponent } from './principal.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {StoreModule} from "@ngrx/store";
 
 
 
@@ -28,7 +29,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     HttpClientModule,
     NgxPaginationModule,
-    FlexLayoutModule 
+    FlexLayoutModule,
   ]
 
 })

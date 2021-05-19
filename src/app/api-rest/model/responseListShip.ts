@@ -5,6 +5,5 @@ export interface ResponseListShip {
    next:string;
    previous:string;
    results:Array<Ship>;
-
 }
 

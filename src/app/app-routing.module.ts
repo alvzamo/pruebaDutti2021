@@ -14,6 +14,7 @@ const routes: Routes = [
          { path: '', loadChildren: () => import('./modulos/inicio/inicio.module').then(m => m.InicioModule) },
          { path: 'principal', loadChildren: () => import(`./modulos/principal/principal.module`).then(m => m.PrincipalModule) },
          { path: '404', redirectTo: '/src/404.html', pathMatch: 'full' },
+         
      ],
   },
   { path: '**', redirectTo: 'home' }

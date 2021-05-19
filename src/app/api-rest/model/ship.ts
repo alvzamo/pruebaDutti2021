@@ -17,7 +17,7 @@ export interface Ship {
     created: string;
     edited: string;
     url: string;
-    img: Blob;
+    img: any;
 
 }
 
