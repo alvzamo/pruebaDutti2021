@@ -11,7 +11,7 @@
     </div>
 
     <div *ngIf="user" fxLayoutAlign="end end">
-        <div style="margin-right: 60px;">{{user.username}} </div>
+        <div style="margin-right: 60px;">{{user.userName}} </div>
         <div  (click)="logout()" [routerLink]="''"><i class="fas fa-sign-out-alt" id="sign-out-alt"></i></div>
     
     </div>
